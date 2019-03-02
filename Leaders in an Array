@@ -1,0 +1,33 @@
+#include<vector>
+using namespace std;
+typedef long long ll;
+
+int main()
+ {
+	//code
+	int t;
+	cin>>t;
+	while(t--){
+	    ll n;
+	    vector<ll> leaders;
+	    cin>>n;
+	    ll a[n];
+	    for(ll i=0;i<n;i++)
+	    cin>>a[i];
+	    leaders.push_back(a[n-1]);
+	    ll curr_max = a[n-1];
+	    for(ll i=n-2;i>=0;i--){
+	        if(a[i]>=curr_max){
+	        leaders.push_back(a[i]);
+	        curr_max=a[i];
+	        }
+	    }
+	    for(ll i=0;i<leaders.size();i++)
+	    {
+	        cout<<leaders[leaders.size()-1-i]<<" ";
+	    }
+	    cout<<"\n";
+	    
+	}
+	return 0;
+}
