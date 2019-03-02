@@ -1,0 +1,26 @@
+using namespace std;
+typedef long long ll;
+int main()
+ {
+	//code
+	int t,n;
+	cin>>t;
+	ll m;
+	while(t--){
+	    cin>>n>>m;
+	    int r1 = pow(m,(1/(float)n));
+	    if(pow(r1,n)==m)
+	    cout<<r1<<endl;
+	    else
+	    cout<<-1<<endl;
+	   // cout<<r1<<" ";
+	   // int r1_ceil = ceil(r1);
+	   // int r1_floor = floor(r1);
+	   // cout<<r1_ceil<< " "<<r1_floor;
+	   // if(r1_ceil == r1_floor)
+	   // cout<<int(r1)<<endl;
+	   // else
+	   // cout<<-1<<endl;
+	}
+	return 0;
+}
