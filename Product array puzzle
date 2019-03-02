@@ -1,0 +1,36 @@
+using namespace std;
+int main()
+ {
+	//code
+	int t;
+	cin>>t;
+	while(t--){
+	    int n;
+	    cin>>n;
+	    int a[n];
+	    long long prod  = 1;
+	    for(int i=0 ; i<n ; i++){
+	    cin>>a[i];
+	    prod*=a[i];
+	    }
+	    
+	   // for(int i=0;i<n;i++)
+	   // cout<<prod/a[i]<<" ";
+	    
+	    long prod[n],right[n],left[n];
+	    right[n-1] = 1;
+	    left[0] = 1;
+	    for(int i = 1 ; i<n ; i++)
+	    left[i] = a[i-1]*left[i-1];
+	    
+	    for(int i = n-2 ; i>=0 ; i++)
+	    right[i] = right[i+1]*a[i+1];
+	    
+	    for(int i=0;i<n;i++){
+	    prod[i] = right[i]*left[i];
+	    cout<<prod[i]<<" ";
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}
