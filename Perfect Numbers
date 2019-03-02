@@ -1,0 +1,22 @@
+using namespace std;
+typedef long long ll;
+int main()
+ {
+	//code
+	int t;
+	ll n;
+	cin>>t;
+	while(t--){
+	    cin>>n;
+	    ll sum = 1;
+	    for(ll i =2;i*i<=n;i++)
+	        if(!(n%i))
+	            sum+=i+n/i;
+	    if(sum==n)
+	    cout<<"1\n";
+	    else
+	    cout<<"0\n";
+	}
+	
+	return 0;
+}
