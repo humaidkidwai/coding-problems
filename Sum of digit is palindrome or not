@@ -1,0 +1,32 @@
+using namespace std;
+
+bool isPalindrome(long n){
+    long rev_n=0;
+    long orig_n=n;
+    while(n){
+	        rev_n=rev_n*10+n%10;
+	        n=n/10;
+	    }
+	    if(orig_n==rev_n)
+	    return true;
+	    else
+	    return false;
+}
+int main() {
+	//code
+	int t,n;
+	cin>>t;
+	while(t--){
+	    cin>>n;
+	    long sum_n=0;
+	    while(n){
+	        sum_n+=n%10;
+	        n/=10;
+	    }
+	    if(isPalindrome(sum_n))
+	    cout<<"YES\n";
+	    else
+	    cout<<"NO\n";
+	}
+	return 0;
+}
