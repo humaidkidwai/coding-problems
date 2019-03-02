@@ -1,0 +1,37 @@
+using namespace std;
+typedef long long ll;
+bool isPrime(ll n){
+    for(ll i=2;i*i<=n;i++){
+        if(n%i==0)
+        return false;
+    }
+    return true;
+}
+ll findMaxPrime(ll n){
+    if(isPrime(n))
+    return n;
+    
+    ll maxPrime = LLONG_MIN;
+    //finds all factors of the number
+    //checks each factor
+    //if prime and > max prime found so far
+    //maxPrime = factor
+    for(ll i=2;i*i<=n;i++){
+        if(n%i==0){
+            if(isPrime(i)&&(i>maxPrime))
+            maxPrime = i;
+            if(isPrime(n/i)&&((n/i)>maxPrime))
+            maxPrime = n/i;
+        }
+    }
+    return maxPrime;
+}
+int main(){
+    int t;
+    cin>>t;
+    while(t--){
+        ll num;
+        cin>>num;
+        cout<<findMaxPrime(num)<<"\n";
+        }
+    }
