@@ -1,0 +1,11 @@
+def createWave(L,n):
+    for i in range(0,n,2):
+        try:L[i],L[i+1] = L[i+1],L[i]
+        except:continue
+    return L
+    
+for i in range(int(input())):
+    n = int(input())
+    L = list(map(int,input().split()))
+    res = createWave(L,n)
+    print(' '.join([str(x) for x in res]))
