@@ -1,0 +1,25 @@
+#include<cstring>
+#include<ctype.h>
+using namespace std;
+
+int main()
+ {
+	//code
+	int t;
+	cin>>t;
+	cin.ignore();
+	while(t--){
+	    string s;
+	    getline(cin,s);
+	    
+	    if(s[0]>=97&&s[0]<=122)
+	    s[0]-=32;
+	    
+	    for(int i=1;i<s.size();i++){
+	        if(s[i-1]==' ' && s[i]>=97 && s[i]<=122)
+	        s[i]-=32;
+	    }
+	    cout<<s<<endl;
+	}
+	return 0;
+}
