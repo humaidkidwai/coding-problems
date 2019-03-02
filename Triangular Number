@@ -1,0 +1,21 @@
+typedef long long ll;
+using namespace std;
+int main()
+ {
+	//code
+	int t;
+	cin>>t;
+	while(t--){
+	    ll n,sum=0,i=1;
+	    cin>>n;
+	    while(sum<n){
+	        sum = (i*(i+1))/2;
+	        i++;
+	    }
+	    if(sum==n)
+	    cout<<1<<endl;
+	    else
+	    cout<<0<<endl;
+	}
+	return 0;
+}
