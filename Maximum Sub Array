@@ -1,0 +1,62 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+ {
+	//code
+	int t;
+	cin>>t;
+	while(t--){
+	    int n,maxSum=0,maxSumLen=0,maxSumIdx=0,
+	    sum=0,sumLen=0,sumIdx=0;
+	    cin>>n;
+	    int a[n];
+	    for(int i=0;i<n;i++)
+	    cin>>a[i];
+	    
+	    for(int i=0;i<n;i++){
+	        if(a[i]<0){
+	            if(sum>maxSum){
+	                maxSum = sum;
+	                maxSumLen = sumLen;
+	                maxSumIdx = sumIdx;
+	            }
+	            else if(sum == maxSum){
+	                if(sumLen>maxSumLen||
+	                ((sumLen==maxSumLen)&&(sumIdx<maxSumIdx))){
+	                    maxSum = sum;
+	                    maxSumLen = sumLen;
+	                    maxSumIdx = sumIdx;
+	                }
+	            }
+	            sum=sumLen=0;
+	            sumIdx = i+1;
+	        }
+	        else{
+	        sum+=a[i];
+	        sumLen+=1;
+	        }
+	        
+	    }
+	   if(sum>maxSum){
+	                maxSum = sum;
+	                maxSumLen = sumLen;
+	                maxSumIdx = sumIdx;
+	            }
+	            else if(sum == maxSum){
+	                if(sumLen>maxSumLen||
+	                ((sumLen==maxSumLen)&&(sumIdx<maxSumIdx))){
+	                    maxSum = sum;
+	                    maxSumLen = sumLen;
+	                    maxSumIdx = sumIdx;
+	                }
+	            }         
+	   // cout<<a[maxSumIdx]<<" "<<a[maxSumLen];
+	    int i=maxSumIdx;
+	    cout<<a[i]<<" ";
+	    for(i=maxSumIdx+1;i<maxSumLen+maxSumIdx;i++)
+	    cout<<a[i]<<" ";
+
+	    cout<<endl;
+	}
+	return 0;
+}
