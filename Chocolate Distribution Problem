@@ -1,0 +1,14 @@
+def findMin(L,m,n):
+    diff = 10**18
+    for i in range(n-m+1):
+        diff = L[i+m-1]-L[i] if L[i+m-1]-L[i] < diff else diff
+    return diff
+   
+    
+tc = int(input())
+for i in range(tc):
+    n = int(input())
+    L = sorted(list(map(int,input().split())))
+    m = int(input())
+    minDiff = findMin(L,m,n)
+    print(minDiff)
