@@ -1,0 +1,13 @@
+using namespace std;
+
+int main() {
+	//code
+	int a,b,n,t;
+	cin>>t;
+	while(t--){
+	cin>>a>>b;
+	cin>>n;
+	cout<< a+(n-1)*(b-a)<<endl;
+	}
+	return 0;
+}
