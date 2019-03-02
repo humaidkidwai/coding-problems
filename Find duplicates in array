@@ -1,0 +1,22 @@
+
+/*Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function is mentioned above.*/
+
+/*Complete the function below*/
+void printDuplicates(int arr[], int n)
+{
+   //add code here.
+   int f=1;
+   for(int i=0;i<n;i++){
+       int index = arr[i]%n;
+       arr[index]+=n;
+       if ((arr[index]/n) == 2){ 
+            cout << index << " "; 
+            f=0;
+        }
+   }
+  
+   if(f)
+   cout<<"-1";
+}
