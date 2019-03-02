@@ -1,0 +1,17 @@
+#include<cmath>
+typedef long long ll;
+using namespace std;
+int main()
+ {
+	//code
+	int t;
+	cin>>t;
+	while(t--){
+	    ll n;
+	    cin>>n;
+	    int ans = sqrt(n);
+	    cout<<ans<<endl;
+	    
+	}
+	return 0;
+}
