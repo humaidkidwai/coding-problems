@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+#define SIZE 10001
+int main()
+ {
+	//code
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	bool a[SIZE];
+	memset(a,true,sizeof(a));
+	a[0] = false;
+	a[1] = false;
+	for(int i=2;i<SIZE;i++){
+	    if(a[i])
+	    for(int j=i;j<=10001/i;j++)
+	    a[j*i] = false;
+	}
+	int t;
+	cin>>t;
+	while(t--){
+	int n;
+	cin>>n;
+	for(int i=2;i<n;i++){
+    	if((a[i]&&a[n-i])&&(i+n-i==n)){
+    	cout<<i<<" "<<n-i<<endl;
+	    break;	    
+	    }	    
+	  }
+	}
+	return 0;
+}
