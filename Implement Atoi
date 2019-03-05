@@ -1,0 +1,38 @@
+/*Please note that it's Function problem i.e.
+you need to write your solution in the form of Function(s) only.
+Driver Code to call/invoke your function is mentioned above.*/
+
+/*You are required to complete this method */
+int atoi(string str)
+{
+    //Your code here
+    int num=0;
+    bool isNeg = false;
+    int i = 0;
+    //handling whitespaces
+    while(str[i]==' ')
+    i++;
+    //handling negative numbers
+    if(str[i]=='-'){
+    isNeg = true;
+    i++;
+    }
+    //calculating highest place of the number
+    int factor = pow(10,str.size()-1-i);
+    //iteratively implementing atoi
+    for(;i<str.size();i++){
+        if(str[i]>='0'&&str[i]<='9'){
+            num+=((str[i]-'0') * factor);
+            factor/=10;
+        }
+        else
+            break;
+    }
+    if(i==str.size())
+    if(isNeg)
+    return num*-1;
+    else
+    return num;
+    else
+    return -1;
+}
