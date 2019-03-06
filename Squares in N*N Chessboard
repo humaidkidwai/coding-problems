@@ -1,0 +1,17 @@
+typedef long long ll;
+using namespace std;
+int main()
+ {
+	//code
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int t;
+	cin>>t;
+	while(t--){
+	ll n;
+	cin>>n;
+	ll ans = ((n*(n+1)*(2*n+1))/6);
+	cout<<ans<<endl;
+	}
+	return 0;
+}
