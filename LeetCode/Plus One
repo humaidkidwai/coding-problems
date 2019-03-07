@@ -1,0 +1,29 @@
+class Solution {
+public:
+    vector<int> plusOne(vector<int>& digits) {
+        bool carry = false;
+        int i = digits.size()-1;
+        digits[i]+=1;
+        if(digits[i]/10)
+            carry = true;
+        digits[i]%=10;
+        i--;
+        while(carry&&i>=0){
+            digits[i]+=1;
+            if(digits[i]/10)
+                carry = true;
+            else
+                carry = false;
+            digits[i]%=10;
+            i--;
+        }
+        if(carry){
+            vector<int> res;
+            res.push_back(1);
+            for(int j=0;j<digits.size();j++)
+                res.push_back(digits[j]);
+            return res;
+        }
+        return digits;
+    }
+};
