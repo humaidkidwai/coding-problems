@@ -1,0 +1,64 @@
+class Solution {
+public:
+    int romanToInt(string s) {
+        unordered_map<char,int> Integer;
+        Integer['I'] = 1;
+        Integer['V'] = 5;
+        Integer['X'] = 10;
+        Integer['L'] = 50;
+        Integer['C'] = 100;
+        Integer['D'] = 500;
+        Integer['M'] = 1000;
+        
+        int i = 0, converted_num=0;
+        while(i<s.size()){
+            if(s[i]=='I'){
+                if(s[i+1]=='V'){
+                    converted_num+=Integer[s[i+1]]-Integer[s[i]];
+                    i+=2;
+                }
+                else if(s[i+1]=='X'){
+                    converted_num+=Integer[s[i+1]]-Integer[s[i]];
+                    i+=2;
+                }
+                else{
+                    converted_num+=Integer['I'];
+                    i++;
+                }
+            }
+            else if(s[i]=='X'){
+                if(s[i+1]=='L'){
+                    converted_num+=Integer[s[i+1]]-Integer[s[i]];
+                    i+=2;
+                }
+                else if(s[i+1]=='C'){
+                    converted_num+=Integer[s[i+1]]-Integer[s[i]];
+                    i+=2;
+                }
+                else{
+                    converted_num+=Integer['X'];
+                    i++;
+                }
+                
+            }
+            else if(s[i]=='C'){
+                if(s[i+1]=='D'){
+                    converted_num+=Integer[s[i+1]]-Integer[s[i]];
+                    i+=2;
+                }
+                else if(s[i+1]=='M'){
+                    converted_num+=Integer[s[i+1]]-Integer[s[i]];
+                    i+=2;
+                }
+                else{
+                    converted_num+=Integer['C'];
+                    i++;
+                }
+                
+            }
+            else
+                converted_num+=Integer[s[i++]];
+        }
+        return converted_num;
+    }
+};
