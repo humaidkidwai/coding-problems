@@ -1,0 +1,24 @@
+int max_path_sum(int A[], int B[], int l1, int l2)
+{
+    //Your code here
+    int sumA=0,sumB=0,maxSum=0,i=0,j=0;
+    while(i<l1&&j<l2){
+        if(A[i]<B[j])
+        sumA+=A[i++];
+        else
+        sumB+=B[j++];
+        if(A[i]==B[j]){
+            sumA+=A[i++];
+            sumB+=B[j++];
+            maxSum+=max(sumA,sumB);
+            sumA=0;
+            sumB=0;
+        }
+    }
+        while(i<l1)
+        sumA+=A[i++];
+        while(j<l2)
+        sumB+=B[j++];
+        maxSum+=max(sumA,sumB);
+        return maxSum;
+}
