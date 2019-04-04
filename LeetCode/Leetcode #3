@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int lengthOfLongestSubstring(string s) {
+        if(s.size()==0)
+            return 0;
+        if(s.size()==1)
+            return 1;
+        int len = 1, max_len = 1;
+        int hashset[256];
+        memset(hashset,0,sizeof(hashset));
+        int start = 0;
+        hashset[s[start]]++;
+        for(int j=1;j<s.size();j++){
+            hashset[s[j]]++;
+            while(hashset[s[j]]>1){
+                hashset[s[start]]--;
+                start++;
+            }
+            len = j-start+1;
+            max_len = max(len,max_len);
+        }
+        return max_len;
+    }
+};
