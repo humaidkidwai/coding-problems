@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main()
+{
+    ll n,i,j;
+    cin>>n;
+    ll h[n][n],v[n][n];
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+    cin>>h[i][j];
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+    cin>>v[i][j];
+    ll hsum=0,vsum=0;
+    for(i=0;i<n;i++)
+    for(j=0;j<n;j++)
+    {
+        hsum+=h[i][j];
+        vsum+=v[i][j];
+    }
+    cout<<max(hsum,vsum)<<endl;
+    return 0;
+}
