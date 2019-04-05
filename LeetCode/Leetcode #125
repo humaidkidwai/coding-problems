@@ -1,0 +1,30 @@
+class Solution {
+public:
+    bool isPalindrome(string s) {
+        if(s.size()<=1)
+            return true;
+        int j = s.size()-1,i=0;
+        bool flag = false;
+        while(i<j){
+            if(isalpha((int)s[i]));
+            s[i] = tolower(s[i]);
+            if(isalpha((int)s[j]))
+            s[j] = tolower(s[j]);
+            if(!(isalnum((int)s[i])))
+                i++;
+            else if(!(isalnum((int)s[j])))
+                j--;
+            else if(s[i]==s[j]){
+                flag = true;
+                i++;j--;
+            }
+            else{
+                flag = false;
+                break;
+            }
+        }
+        if(i==j)
+            return 1;
+        return flag;
+    }
+};
