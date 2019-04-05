@@ -1,0 +1,27 @@
+#include <iostream>
+#include<math.h>
+using namespace std;
+#define MOD 1000000007
+
+int main()
+{
+    int T,N,i;
+    long long no= 2;
+    
+    cin>>T;
+    
+    while(T--)
+    {
+    	
+        cin>>N;
+        
+        cout<<2<<" ";
+        for( i=0;i<N-1;i++)
+        {    
+        	no=((no%MOD) * ( no-1)%MOD)+1;
+        	cout<<no<<" ";
+        }
+        cout<<endl;
+    }
+    return 0;
+}
