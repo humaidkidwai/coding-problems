@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main(){
+    int n;
+    cin>>n;
+    int a[n];
+    for(int i=0;i<n;i++)
+    cin>>a[i];
+    if(n==1||n==2){
+        cout<<0<<endl;
+        return 0;
+    }
+    int curr_idx, prev_idx = 0,tile = 2, jumps = 0;
+    unordered_map<int,int> ht;
+    for(int i=0;i<n;i++)
+    ht[a[i]]=i;
+    while(tile <= n){
+        curr_idx = ht[tile];
+        if(abs(prev_idx-curr_idx)!=1)
+            jumps++;
+        prev_idx = curr_idx;
+        tile++;
+    }
+    cout<<jumps<<"\n";
+    return 0;
+}
