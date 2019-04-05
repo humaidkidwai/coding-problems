@@ -1,0 +1,47 @@
+#include<bits/stdc++.h>
+using namespace std;
+void push(int);
+void pop();
+struct node{
+    int data;
+    struct node* link;
+};
+struct node* head;
+struct node* tmp;
+int main()
+{
+	head=NULL;
+    int q,x;
+    long c;
+    cin>>q;
+    while(q--)
+    {     
+          
+          cin>>x;
+          if(x==1)
+          pop();
+          else if(x==2)
+          {cin>>c;
+          push(c);}
+    }      
+}
+void push(int a)
+{
+    tmp=new(node);
+    tmp->data=a;
+    tmp->link=head;
+    head=tmp;
+}
+
+void pop()
+{
+    if(head==NULL)
+    cout<<"No Food\n";
+    else
+    {
+    cout<<head->data<<endl;
+    tmp=head;
+    head=head->link;
+    delete(tmp);
+    }
+}
