@@ -1,0 +1,29 @@
+#include <iostream>
+#include<string.h>
+using namespace std;
+#define size 5000
+int main()
+{
+    int i,j,count=0,n=0;
+    char a;
+   char P[size];
+   gets(P);
+   i=0;
+   while(P[i]!='\0')
+        {
+           i++;
+           n++;
+        }
+   for(i=0,j=n-1;i<n/2;i++,j--)
+   {
+       if(P[i]!=P[j])
+    {
+	   
+       P[i]=P[j];
+	   count++;
+    }
+       
+   }
+   cout<<count;
+    return 0;
+}
