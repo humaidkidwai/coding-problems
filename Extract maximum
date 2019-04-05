@@ -1,0 +1,25 @@
+typedef long long ll;
+using namespace std;
+int main()
+ {
+	//code
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int t;
+	cin>>t;
+	while(t--){
+	int cur=0,max1=0;
+	string s;
+	cin>>s;
+	for(int i=0;i<s.size();i++){
+	    if(s[i]>='0'&&s[i]<='9'){
+	        cur = cur*10+(s[i]-'0');
+	        max1 = max(cur,max1);
+	    }
+	    else
+	    cur = 0;
+	}
+	cout<<max1<<endl;
+	}
+	return 0;
+}
