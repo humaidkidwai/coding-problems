@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+	int n,i,f,c=0,m=0;
+	cin>>n;
+	int a[n];
+	for(i=0;i<n;i++)
+	{
+		cin>>a[i];
+	}
+	i=0;
+	if(a[i]!=a[i+1])
+	f=a[0];
+	else
+	{
+		while(a[i]==a[i+1])
+		{
+			i++;
+		}
+		f=a[i+1];
+	}
+	for(i=0;i<n;i++)
+	{
+		if(a[i]==f)
+		{c++;
+		m=max(m,c);}
+		else
+		c=0;
+	}
+	cout<<"\n"<<m;
+}
