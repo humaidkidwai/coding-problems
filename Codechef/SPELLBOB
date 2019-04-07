@@ -1,0 +1,55 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+int t,i,j,count=0;
+cin>>t;
+while(t--)
+{
+	count=0;
+	string a;
+	string b;
+	for(i=0;i<3;i++)
+	cin>>a[i];
+	for(j=0;j<3;j++)
+	cin>>b[j];
+	for(i=0;i<3;i++)
+	{
+		if(a[i]=='o'&&b[i]=='o')
+		{
+		swap(a[i],a[1]);
+		swap(b[i],b[1]);
+		count++;
+		break;
+		}
+		if((a[i]=='o'&&b[i]!='b')||(a[i]!='b'&&b[i]=='o'))
+		{
+		swap(a[i],a[1]);
+		swap(b[i],b[1]);
+		count++;
+		break;
+		}
+	}
+	if(!count)
+	{
+		for(i=0;i<3;i++)
+		{
+			if(a[i]=='o'||b[i]=='o')
+			{
+			swap(a[i],a[1]);
+			swap(b[i],b[1]);
+			count++;
+			break;
+			}
+		}
+	}
+
+	if((a[2]=='b'||b[2]=='b')&&(a[0]=='b'||b[0]=='b'))
+	count+=2;
+	
+	if(count==3)
+	cout<<"yes"<<endl;
+	else
+	cout<<"no"<<endl;
+}
+}
