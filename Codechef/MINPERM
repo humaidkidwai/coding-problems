@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main()
+{
+    int t;
+    ll n,i;
+    cin>>t;
+    while(t--)
+    {
+        cin>>n;
+        ll a[n];
+        for(i=0;i<n;i++)
+        a[i]=i+1;
+        for(i=0;i<n;i+=2)
+        {
+            if(i+2<=n)
+            swap(a[i],a[i+1]);
+            if(i+1==n)
+            swap(a[i],a[i-1]);
+        }
+        for(i=0;i<n;i++)
+        cout<<a[i]<<" ";
+        cout<<endl;
+    } 
+ return 0;   
+}
