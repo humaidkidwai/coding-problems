@@ -1,0 +1,24 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+int main()
+{
+ll n,t;
+cin>>t;
+while(t--)
+{
+cin>>n;
+ll N=floor((n-1)/26);//N is  the power of 2
+ll totalPop=pow(2,N);//total population
+ll diff=n-(26*N)-1;//finding how many seconds have passed since population increased
+
+if(diff<26&&diff>=10)//byte
+cout<<"0 0 "<<totalPop<<endl;
+
+else if(diff>=2&&diff<10)//nibble
+cout<<"0 "<<totalPop<<" 0\n";
+
+else if(diff>=0&&diff<=1)//bit
+cout<<totalPop<<" 0 0\n";
+}
+}
