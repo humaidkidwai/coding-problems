@@ -1,0 +1,25 @@
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+int t,n,x,f1=0,f2=0;
+long long p;
+cin>>t;
+while(t--)
+{
+cin>>n>>p;
+f1=f2=0;
+while(n--)
+{
+cin>>x;
+if(x>=p/2)
+f1++;
+else if(x<=p/10)
+f2++;
+}
+if(f1==1&&f2==2)
+cout<<"\nyes";
+else 
+cout<<"\nno";
+}
+}
