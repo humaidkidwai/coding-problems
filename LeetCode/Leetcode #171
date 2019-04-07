@@ -1,0 +1,10 @@
+class Solution {
+public:
+    int titleToNumber(string s) {
+            long long col_no=0;
+            for(int i=0;i<s.size();i++){
+                col_no+=pow(26,s.size()-i-1)*(s[i]-'A'+1);
+            }
+    return col_no;
+    }
+};
