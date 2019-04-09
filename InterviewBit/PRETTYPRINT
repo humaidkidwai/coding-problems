@@ -1,0 +1,29 @@
+vector<vector<int> > Solution::prettyPrint(int A) {
+    if(A==1){
+        return {"1"};
+    }
+    if(A==0){
+        return {};
+    }
+    vector<vector<int>(A+A-1)> pattern(A+A-1);
+    int i = 0,j=0,left = 0,right = pattern.size()-1,top = 0,bottom = pattern[pattern.size()-1].size()-1;
+    while(top!=bottom&&left!=right){
+        while(i<right)
+        pattern[top][i++] = A;
+        while(j<bottom)
+        pattern[j++][right] = A;
+        while(i>left)
+        pattern[bottom][i--] = A;
+        while(j>top)
+        pattern[j--][left] = A;
+        
+        A--;
+        bottom--;
+        top++;
+        right--;
+        left++;
+        j++;
+        i++;
+    }
+    return pattern;
+}
