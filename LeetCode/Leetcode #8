@@ -1,0 +1,36 @@
+class Solution {
+public:
+    int myAtoi(string str) {
+        if(!str.size())
+            return 0;
+        int i=0;
+        while(str[i]==' ')
+            i++;
+        bool positive=true;
+        if(str[i]=='-'){
+            positive = false;
+            i++;
+        }
+        else if(str[i]=='+'){
+            i++;
+        }
+        if(!(str[i]>='0'&&str[i]<='9'))
+            return 0;
+        
+        long long int number=0;
+        while(str[i]>='0'&&str[i]<='9'&&number<LONG_MAX&&number>LONG_MIN){
+            if(number>INT_MAX||number<INT_MIN)
+                break;
+            number=number*10+(str[i]-'0');
+            i++;    
+        }
+        if(!positive)
+        number= -1*number;
+        if(number>INT_MAX)
+            return INT_MAX;
+        else if(number<INT_MIN)
+            return INT_MIN;
+        else
+            return number;
+    }
+};
