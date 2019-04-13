@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int firstUniqChar(string s) {
+        int charcnt[26];
+        memset(charcnt,0,sizeof(charcnt));
+        for(int i=0;i<s.size();i++)
+            charcnt[s[i]-'a']++;
+        for(int i = 0;i<s.size();i++)
+            if(charcnt[s[i]-'a']==1)
+                return i;
+        return -1;
+    }
+};
