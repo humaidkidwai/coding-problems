@@ -1,0 +1,31 @@
+#include <iostream>
+using namespace std;
+
+void generateOrders(int num,long long curr,int next){
+    if(curr>num)
+        return;
+    cout<<curr<<endl;
+    long long orig = curr;
+    for(int i=0;i<10;i++){
+        curr = curr*10 + i;
+        generateOrders(num,curr,0);
+        curr = orig;
+    }
+}
+
+
+void lexicographicalOrder(int num){
+	// Write your code here
+    int prev=num,tmp=num;
+    while(tmp){
+        prev = tmp;
+        tmp/=10;
+    }
+    // cout<<prev<<endl;
+    // cout<<"Outside loop"<<endl;
+
+    for(int i = 1; i <= prev; i++){
+        // cout<<"In Loop";
+        generateOrders(num,i,0);
+    }
+}
