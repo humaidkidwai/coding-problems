@@ -1,0 +1,33 @@
+#include <vector>
+#include<algorithm>
+void generateCombinations(vector<int> ar,vector<vector<int>>&res,int sum,vector<int>&tmp,int i){
+    if(sum<0)
+        return;
+    if(sum==0){
+        res.push_back(tmp);
+        return;
+    }
+    while(i < ar.size() && sum-ar[i] >= 0){
+        tmp.push_back(ar[i]);
+        generateCombinations(ar,res,sum-ar[i],tmp,i);
+        i++;
+        tmp.pop_back();
+    }
+    
+}
+vector<vector<int> > combinationSum(vector<int>& ar, int sum){
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     * Taking input and printing output is handled automatically.
+     */
+    sort(ar.begin(),ar.end());
+    ar.erase(unique(ar.begin(), ar.end()), ar.end()); 
+    
+    vector<vector<int>> res;
+    vector<int> tmp;
+    generateCombinations(ar,res,sum,tmp,0);
+    return res;
+}
+
+
