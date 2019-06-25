@@ -1,0 +1,29 @@
+#include<bits/stdc++.h>
+int min(int a, int b, int c){
+    int tmp = min(a,b);
+    return min(tmp,c);
+}
+int countStepsTo1(int n){
+
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Return output and don't print it.
+     */
+    int minStepsTo[n+1]={0};
+    minStepsTo[0] = 0;
+    minStepsTo[1] = 1;
+    minStepsTo[2] = 1;
+    minStepsTo[3] = 1;
+    for(int i = 4;i <= n; i++){
+        int cnt2 = INT_MAX,cnt3 = INT_MAX,cnt1 = INT_MAX;
+        if(i % 2 == 0){
+            cnt2 = 1 + minStepsTo[i/2];
+        }
+        if(i % 3 == 0){
+            cnt3 = 1 + minStepsTo[i/3];
+        }
+        cnt1 = 1 + minStepsTo[i-1];
+        minStepsTo[i] = min(cnt1,cnt2,cnt3);
+    }
+    return minStepsTo[n];
+}
