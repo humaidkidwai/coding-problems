@@ -1,0 +1,11 @@
+#define MOD 1000000007
+int binaryTreesOfHeightH(int h) {
+    // Write your code here
+    long BT[h+1];
+    BT[0] = 1;
+    BT[1] = 1;
+    for(int i=2;i<=h;i++)
+        BT[i] = (BT[i-1]%MOD * ((2*BT[i-2])%MOD + BT[i-1])%MOD)%MOD;
+    return BT[h]%MOD;
+}
+
