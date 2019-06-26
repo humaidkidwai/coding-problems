@@ -1,0 +1,28 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+ int lis(int arr[], int n) {
+		
+				
+	/*Write your code here. 
+	 *Don't write main().
+	 *Don't take input, it is passed as function argument.
+	 *Don't print output.
+	 *Taking input and printing output is handled automatically.
+	*/ 
+     int lookup[n];
+     int result = 1;
+     
+     for(int i=0;i<n;i++){
+         lookup[i] = 1;
+         for(int j=0;j<i;j++){
+             if(arr[j]<arr[i] && lookup[i] < lookup[j]+1)
+                 lookup[i] = lookup[j] + 1;
+         }
+         if(lookup[i]>result)
+             result = lookup[i];
+     }
+     // for(int i=0;i<n;i++)
+     //     cout<<lookup[i]<<" ";
+     return result;
+ }
