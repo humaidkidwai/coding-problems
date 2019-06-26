@@ -1,0 +1,16 @@
+#include<bits/stdc++.h>
+int findSum(int arr[],int n){
+    /* Don't write main().
+     * Don't read input, it is passed as function argument.
+     * Don't print output and return the output.
+     * Taking input and printing output is handled automatically.
+     */
+    int max_so_far = arr[0], max_total = arr[0];
+    for(int i=1;i<n;i++){
+        max_so_far = max(arr[i],arr[i]+max_so_far);
+        max_total = max(max_so_far,max_total);
+    }
+    return max_total;
+}
+ 
+    
