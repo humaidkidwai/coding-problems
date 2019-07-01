@@ -1,0 +1,56 @@
+#include<vector>
+using namespace std;
+bool isValidMove(vector<vector<int>>grid,int i,int j){
+    
+    for(int k=0;k<i;k++)
+        if(grid[k][j]==1)
+            return false;
+    
+    // for(int k=0;k<grid[i].size();k++)
+    //     if(grid[i][k]==1)
+    //         return false;
+    
+    int m = i-1;
+    int n = j-1;
+    while(m>=0 && n>=0 && m<grid.size() && n<grid[i].size()){
+        if(grid[m--][n--]==1)
+            return false;
+    }
+    int x = i-1;
+    int y = j+1;
+    while(x>=0&&y<grid.size())
+        if(grid[x--][y++]==1)
+            return false;
+    return true;
+    
+}
+void printConfig(vector<vector<int>>grid){
+    for(int i=0;i<grid.size();i++){
+        for(int j=0;j<grid[i].size();j++)
+            cout<<grid[i][j]<<" ";
+    }
+    cout<<endl;
+}
+
+void findAllConfigurations(vector<vector<int>>&grid,int row){
+    if(grid.size() == row){
+        printConfig(grid);
+        return;
+    }
+    for(int j = 0; j < grid[row].size(); j++){
+        if(isValidMove(grid,row,j)){
+            grid[row][j] = 1;
+            findAllConfigurations(grid,row+1);
+            grid[row][j] = 0;
+        }
+    }
+}
+void placeNQueens(int n){
+
+  /* Don't write main().
+   *  Don't read input, it is passed as function argument.
+   *  Print output as specified in the question
+  */
+    vector<vector<int>> grid(n,vector<int>(n,0));
+    findAllConfigurations(grid,0);
+}
