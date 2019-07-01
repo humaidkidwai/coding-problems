@@ -1,0 +1,46 @@
+#include<cmath>
+#include<iostream>
+using namespace std;
+long count(long num,int *fact,int *freq, int den,int places){
+    if(num<=9)
+        return 0;
+    long ans=0;
+    long div = (pow(10,places));
+    int tmp = num/div;
+    for(int i=tmp+1;i<10;i++)
+        if(freq[i])
+            ans+= (fact[places]*freq[i]/den);
+    den = den/freq[tmp];
+    freq[tmp]--;
+    num = num%div;
+    ans+= count(num,fact,freq,den,places-1);
+    return ans;
+}
+
+
+
+long numberOfNumbersWithDuplicates(long num){
+	// Write your code here`
+    int fact[11];
+    int freq[10]={0};
+    
+    fact[0] = 1;
+    for(int i=1;i<=10;i++)
+        fact[i] = fact[i-1] * i;
+    
+    long tmp = num;
+    int places = 0;
+    while(tmp){
+        freq[tmp%10]++;
+        tmp/=10;
+        places++;
+    }
+    
+    long long den=1;
+    for(int i=0;i<10;i++)
+        if(freq[i])
+        den*=fact[freq[i]];
+    
+    return count(num,fact,freq,den,places-1);
+
+}
