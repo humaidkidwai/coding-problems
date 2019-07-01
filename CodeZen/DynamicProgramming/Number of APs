@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define MOD 100001
+int numofAP(int *arr, int n){
+    /*
+    Return all possible AP subsequences formed from the given integer array. You donot need to take input or print anything.
+    Just return the ans.
+    */
+    unordered_map<int,int> map[n];
+    int ans = n+1;
+    map[n-2][arr[n-1]-arr[n-2]] = 1;
+    ans++;
+    for(int i = n-3; i >= 0; i--){
+        for(int j = i+1; j < n; j++){
+            if(map[j].find(arr[j]-arr[i])!=map[j].end()){
+                ans = (ans%MOD + (map[j][arr[j]-arr[i]]%MOD + 1)%MOD)%MOD;
+                map[i][arr[j]-arr[i]] += (map[j][arr[j]-arr[i]]%MOD + 1)%MOD;
+            }
+            else{
+                map[i][arr[j]-arr[i]] = 1;
+                ans = (ans%MOD+1)%MOD;
+            }
+        }
+    }
+    return ans%MOD;
+}
