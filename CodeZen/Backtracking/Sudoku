@@ -1,0 +1,51 @@
+#include<unordered_map>
+
+bool isUnassigned(int board[][9],int &row,int &col){
+    for (row = 0; row < 9; row++)  
+        for (col = 0; col < 9; col++)  
+            if (board[row][col] == 0)  
+                return true;  
+    return false;  
+}
+
+unordered_map<int,bool> getOptions(int board[][9],int row,int col){
+    unordered_map<int,bool> options;
+    
+    //check same row
+    for(int j=0;j<9;j++)
+        if(board[row][j]>0)
+            options[board[row][j]] = true;
+    //check same col
+    for(int i=0;i<9;i++)
+        if(board[i][col])
+            options[board[i][col]] = true;
+    //check sub-grid
+    int startRow = row-(row%3);
+    int startCol = col-(col%3);
+    for(int i=startRow;i<startRow+3;i++)
+        for(int j=startCol;j<startCol+3;j++)
+            if(board[i][j])
+                options[board[i][j]] = true;
+    return options;
+}
+
+bool sudokuSolver(int board[][9]){
+
+  /* Don't write main().
+   *  Don't read input, it is passed as function argument.
+   *  Don't print output and return output as specified in the question
+  */
+    int row,col;
+    if(!isUnassigned(board,row,col))
+        return true;
+    unordered_map<int,bool> options = getOptions(board,row,col);
+    for(int i=1;i<=9;i++){
+        if(options.find(i)==options.end()){
+            board[row][col] = i;
+            if(sudokuSolver(board))
+                return true;
+            board[row][col] = 0;
+        }
+    }
+    return false;
+}
