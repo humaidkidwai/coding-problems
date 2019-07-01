@@ -1,0 +1,30 @@
+#include<bits/stdc++.h>
+using namespace std;
+int solve(int n,vector<int>A){
+  /* Don't write main().
+     Don't read input, it is passed as function argument.
+     Return output and don't print it.
+     Taking input and printing output is handled automatically.
+  */
+    int dp[1001];
+    int freq[1001];
+    for(int i=0;i<=1000;i++){
+        freq[i]=0;
+        dp[i]=0;
+    }
+    for(int i=0;i<n;i++){
+        freq[A[i]]++;
+    }
+    
+    dp[0]=0;
+    dp[1]=freq[1];
+    for(int i=2;i<=1000;i++){
+        int x=dp[i-2]+i*freq[i];
+        if(x>dp[i-1]){
+            dp[i]=x;
+        }else{
+            dp[i]=dp[i-1];
+        }
+    }
+    return dp[1000];
+}
