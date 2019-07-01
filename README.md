@@ -6,6 +6,7 @@ This is a repository containing algorithmic problems that I have solved on the f
 * Codechef
 * GeeksforGeeks
 * Leetcode
+* CodeZen
 #### Most of the solutions are in C++, However a few have been crafted in Python as well
 It keeps updating regularly:muscle::smile:
 
