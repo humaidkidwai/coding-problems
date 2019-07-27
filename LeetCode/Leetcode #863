@@ -1,0 +1,75 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+
+void printkdistanceNodeDown(TreeNode *root, int k,vector<int> &result)
+{
+// Your code here
+    if(!root || k < 0)
+        return;
+    if(k == 0){
+        result.push_back(root->val);
+        return;
+    }
+    printkdistanceNodeDown(root->left,k-1,result);
+    printkdistanceNodeDown(root->right,k-1,result);
+}
+void  printkdistanceNodeAbove(vector<TreeNode*> path,TreeNode* child,TreeNode*                                                  parent,int k,vector<int> &result,int i){
+    if(k == 0){
+        result.push_back(parent->val);
+        return;
+    }
+    if(k < 0)
+        return;
+    
+    if(parent->left == child)
+        printkdistanceNodeDown(parent->right,k-1,result);
+    else if(parent->right == child)
+        printkdistanceNodeDown(parent->left,k-1,result);
+    
+    if(i+1 < path.size())
+        printkdistanceNodeAbove(path,parent,path[i+1],k-1,result,i+1);
+}
+
+bool createPath(TreeNode* root, TreeNode* target,vector<TreeNode*> &path){
+    if(!root)
+        return false;
+    
+    path.push_back(root);
+    
+    if(root == target)
+        return true;
+    
+    if(createPath(root->left,target,path) || createPath(root->right,target,path))
+        return true;
+    
+    path.pop_back();
+    return false;
+    
+}
+class Solution {
+public:
+    vector<int> distanceK(TreeNode* root, TreeNode* target, int K) {
+        vector<int> result;
+        
+        if(K == 0)
+            return {target->val};
+        
+        printkdistanceNodeDown(target,K,result);
+        
+        vector<TreeNode*> path;
+        createPath(root,target,path);
+        reverse(path.begin(),path.end());
+        
+        if(path.size() > 1)
+        printkdistanceNodeAbove(path,target,path[1],K-1,result,1);
+        
+        return result;
+    }
+};
