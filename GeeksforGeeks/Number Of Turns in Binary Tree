@@ -1,0 +1,63 @@
+/*
+Structure of the node of the tree is as
+struct Node {
+	struct Node* left, *right;
+	int key;
+};
+*/
+// fundtion should return the number of turns 
+// form first node to second node
+#define rt 0
+#define lt 1
+pair<int,bool> NumberOFTurn(struct Node* root, int target, int prevprev,int prevDIR){
+    pair<int,bool> turns = make_pair(0,0);
+    if(!root)
+        return turns;
+    
+    if(prevprev != prevDIR)
+        turns.first++;
+        
+    if(root->key == target){
+        turns.second = true;
+        return turns;
+    }
+
+    pair<int,bool> path1 = NumberOFTurn(root->left,target,prevDIR,lt);
+    pair<int,bool> path2 = NumberOFTurn(root->right,target,prevDIR,rt);
+    
+    if(!path1.second && !path2.second)
+        return make_pair(0,0);
+        
+    turns.first += path1.second?path1.first:path2.first;
+    turns.second = true;
+    
+    return turns;
+}
+struct Node* findLCA(struct Node* root, int first, int second){
+    if(!root)
+        return root;
+    if(root->key == first || root-> key == second)
+        return root;
+    struct Node* left = findLCA(root->left,first,second);
+    struct Node* right = findLCA(root->right,first,second);
+    if(left && right)
+        return root;
+
+    return (left)?left:right;
+}
+int NumberOFTurn(struct Node* root, int first, int second)
+{
+	// Code here
+	Node* lca = findLCA(root,first,second);
+	pair<int,bool> left = NumberOFTurn(lca,first,-1,-1);
+	pair<int,bool> right = NumberOFTurn(lca,second,-1,-1);
+	
+// 	cout<<left<<" "<<right<<" \n";
+	if(left.second && right.second)
+	return left.first + right.first - 1;
+	    
+	if(left.second)
+	return left.first;
+	
+	return right.first;
+}
