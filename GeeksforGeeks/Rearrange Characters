@@ -1,0 +1,26 @@
+#include<bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+int main()
+ {
+	//code
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int t;
+	cin>>t;
+	while(t--){
+	    string s;
+	    cin>>s;
+	    unordered_map<char,int> map;
+	    int maxFreq = 0;
+	    for(auto i:s){
+	        map[i]++;
+	        maxFreq = max(map[i],maxFreq);
+	    }
+	    if(maxFreq <= (s.size()+1)/2)
+	    cout << 1 <<endl;
+	    else
+	    cout<< 0 <<endl;
+	}
+	return 0;
+}
