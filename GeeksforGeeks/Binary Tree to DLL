@@ -1,0 +1,21 @@
+void convertToDLL(Node* root, Node **head_ref,Node* tail){
+    if(!root)
+    return;
+    convertToDLL(root->left,head_ref,tail);
+    
+    if(tail == NULL)
+        *head_ref = root;
+    else{
+        root->left = tail;
+        (tail)->right = root;
+    }
+    tail = root;
+    convertToDLL(root->right,head_ref,tail);
+}
+void bToDLL(Node *root, Node **head_ref)
+{
+    // your code here
+    Node *tail = NULL;
+    convertToDLL(root,head_ref,tail);
+    cout<<endl;
+}
