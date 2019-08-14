@@ -1,0 +1,39 @@
+/*
+Write a program to do basic string compression. For a character which is consecutively repeated more than once, replace consecutive duplicate occurrences with the count of repetitions.
+For e.g. if a String has 'x' repeated 5 times, replace this "xxxxx" with "x5".
+Note : Consecutive count of every character in input string is less than equal to 9.
+Input Format :
+Input string S
+Output Format :
+Compressed string 
+Sample Input:
+aaabbccdsa
+Sample Output:
+a3b2c2dsa
+*/
+
+
+// input - given string
+// You need to update in the given string itself i.e. in input. No need to return or print.
+
+void stringCompression(char input[]) {
+    // Write your code here
+    int slow=0,count=1;
+    char curr=input[0];
+    for(int fast=1;input[fast]!='\0';fast++){
+        if(input[fast]!=input[fast-1]){
+            input[slow]=curr;
+          	slow+=1;
+            curr = input[fast];
+          	if(count!=1)
+            input[slow++]=count+'0';
+            count=1;
+        }
+        else 
+            count++;
+    }
+  	input[slow++] = curr;
+  	if(count!=1)
+            input[slow++]=count+'0';
+    input[slow]='\0';
+}
