@@ -1,0 +1,44 @@
+/*
+Given a string S, reverse each word of a string individually. For eg. if a string is "abc def", reversed string should be "cba fed".
+Input Format :
+String S
+Output Format :
+Updated string
+Constraints :
+1 <= Length of S <= 1000
+Sample Input :
+Welcome to Coding Ninjas
+Sample Output:
+emocleW ot gnidoC sajniN
+*/
+
+
+// input - given string
+// Update in the given input itself. No need to return or print anything
+
+void reverseEachWord(char input[]) {
+    // Write your code here
+    int start = 0, end,i;
+    for(i = 0 ; input[i]!='\0' ; i++){
+        if(input[i]==' '&&input[i-1]!=' '){
+            end = i-1;
+            while(start<end){
+                char tmp = input[start];
+                input[start] = input[end];
+                input[end] = tmp;
+                end--;
+                start++;
+            }
+            start = i+1;
+        }
+    }
+    end = i-1;
+    while(start<end){
+        char tmp = input[start];
+        input[start] = input[end];
+        input[end] = tmp;
+        end--;
+        start++;
+    }
+
+}
