@@ -1,0 +1,43 @@
+/*
+Given a string S, count and return the number of substrings of S that are palindrome.
+Single length substrings are also palindromes. You just need to calculate the count, not the substrings.
+Input Format :
+String S
+Output Format :
+count of palindrome substrings
+Constraints :
+1 <= Length of S <= 1000
+Sample Input :
+aba
+Sample Output :
+4
+**Note : Here 4 corresponds to ("a","b","a","aba").
+*/
+int countPalindromeSubstrings(char s[]) {
+	// Write your code here
+    int mid_o,mid_e[2],left,right,cnt=0,len=0;
+    for(int i=0;s[i]!='\0';i++)
+        len++;
+    for(int i=0;i<len;i++){
+        cnt++;
+        mid_o=i;
+        left = i-1;
+        right = i+1;
+        while(left>=0&&right<len&&s[left--]==s[right++]){
+                cnt++;
+        }
+    }
+    for(int i=0;i<len;i++){
+        mid_e[0]=i;
+        mid_e[1]=i+1;
+        if(s[mid_e[0]]==s[mid_e[1]]){
+            cnt++;
+            left = mid_e[0]-1;
+            right = mid_e[1]+1;
+            while(left>=0&&right<len&&s[left--]==s[right++]){
+                cnt++;
+            }
+        }
+    }
+	return cnt;
+}
