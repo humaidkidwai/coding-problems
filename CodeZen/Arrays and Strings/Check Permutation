@@ -1,0 +1,41 @@
+/*
+Given two strings, check if they are permutations of each other. Return true or false.
+Permutation means - length of both the strings should same and should contain same set of characters. Order of characters doesn't matter.
+Note : Input strings contain only lowercase english alphabets.
+Input format :
+Line 1 : String 1
+Line 2 : String 2
+Sample Input 1 :
+abcde
+baedc
+Sample Output 1 :
+true
+Sample Input 2 :
+abc
+cbd
+Sample Output 2 :
+false
+*/
+bool isPermutation(char input1[], char input2[]) {
+    // Write your code here
+    int n1=0,n2=0;
+    for(int i=0;input1[i]!='\0';i++)
+        n1++;
+    for(int i=0;input2[i]!='\0';i++)
+        n2++;
+    if(n1!=n2)
+        return false;
+    int ht[26]={0};
+    for(int i=0;i<n1;i++){
+        ht[input1[i]%97]++;
+    }
+    for(int i=0;i<n2;i++)
+           ht[input2[i]%97]--;
+    for(int i=0;i<26;i++)
+           if(ht[i]!=0)
+            return false;
+    return true;
+         
+    
+
+}
