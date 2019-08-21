@@ -1,0 +1,31 @@
+#include<bits/stdc++.h>
+typedef long long ll;
+using namespace std;
+int main()
+ {
+	//code
+	ios_base::sync_with_stdio(false);
+	cin.tie(NULL);
+	int t;
+	cin>>t;
+	while(t--){
+	    int n;
+	    cin>>n;
+	    int a[n];
+	    for(int i=0;i<n;i++)
+	    cin>>a[i];
+	    
+	    int leftLargest[n];
+	    leftLargest[n-1] = a[n-1];
+	    for(int i = n-2; i>=0; i--){
+	        leftLargest[i] = max(a[i],leftLargest[i+1]);
+	    }
+	    
+	    for(int i = 0; i < n; i++){
+	        if(a[i] >= leftLargest[i])
+	        cout<<a[i]<<" ";
+	    }
+	    cout<<endl;
+	}
+	return 0;
+}
