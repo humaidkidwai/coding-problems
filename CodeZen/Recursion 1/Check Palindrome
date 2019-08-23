@@ -1,0 +1,31 @@
+/*
+Check if a given String S is palindrome or not (using recursion). Return true or false.
+Input Format :
+String S
+Output Format :
+true or false
+Sample Input 1 :
+racecar
+Sample Output 1:
+true
+Sample Input 2 :
+ninja
+Sample Output 2:
+false
+*/
+
+#include<cstring>
+using namespace std;
+bool isPalindrome(char *input,int start, int end){
+    if(start == end || (start+1 == end ))
+        return true;
+    if(input[start] != input[end])
+        return false;
+    return isPalindrome(input,start+1,end-1);
+}
+bool checkPalindrome(char input[]) {
+    // Write your code here
+    return isPalindrome(input,0,strlen(input-1));
+}
+
+
