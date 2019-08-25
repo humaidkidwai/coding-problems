@@ -1,0 +1,51 @@
+/*
+Assume that the value of a = 1, b = 2, c = 3, ... , z = 26. You are given a numeric string S. Write a program to return the list of all possible codes that can be generated from the given string.
+Note : The order of codes are not important. And input string does not contain 0s.
+Input format :
+A numeric string
+Constraints :
+1 <= Length of String S <= 10
+Sample Input:
+1123
+Sample Output:
+aabc
+kbc
+alc
+aaw
+kw
+*/
+
+
+#include<bits/stdc++.h>
+using namespace std;
+void helper(string input,string output[],string tmp,int &osize,unordered_map<string,char> m) {
+    if(input.size()==0){
+        output[osize++] = tmp;
+        return;
+    }
+    // if(i==input.size()-1){
+    //     output[osize++] = tmp + m[to_string(input[i])];
+    //     return;
+    // }
+    if(input[0]!='0') {
+        string temp = tmp+m[to_string(input[0] - '0')];
+        helper(input.substr(1),output,temp,osize,m);
+    }
+    if(input.size() >= 2 && ((input[0] - '0')*10 + (input[1] - '0')) <= 26 && 
+       ((input[0] - '0')*10 + (input[1] - '0')) >= 10) {
+        string temp = tmp+m[to_string((input[0] - '0')*10 + (input[1] - '0'))];
+        helper(input.substr(2),output,temp,osize,m);
+    }
+}
+int getCodes(string input, string output[10000]) {
+    /*
+    You are given the input text and output string array. Find all possible codes and store in the output string array. Donât print the codes.
+    Also, return the number of codes return to the output string. You do not need to print anything.
+    */
+    unordered_map<string,char> m;
+    int osize = 0;
+    for(int i  = 1; i <= 26; i++)
+        m[to_string(i)] = 'a' + i - 1;
+    helper(input,output,"",osize,m);
+    return osize;
+}
