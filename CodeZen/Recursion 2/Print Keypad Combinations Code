@@ -1,0 +1,68 @@
+/*
+Given an integer n, using phone keypad find out and print all the possible strings that can be made using digits of input n.
+Note : The order of strings are not important. Just print different strings in new lines.
+Input Format :
+Integer n
+Output Format :
+All possible strings in different lines
+Constraints :
+1 <= n <= 10^6
+Sample Input:
+23
+Sample Output:
+ad
+ae
+af
+bd
+be
+bf
+cd
+ce
+cf
+*/
+#include<bits/stdc++.h>
+#include<string>
+#include<iostream>
+using namespace std;
+string getSequence(int num){
+    switch (num){
+        case 2:
+            return "abc";
+        case 3:
+            return "def";
+        case 4:
+            return "ghi";
+        case 5:
+            return "jkl";
+        case 6:
+            return "mno";
+        case 7:
+            return "pqrs";
+        case 8:
+            return "tuv";
+        case 9:
+            return "wxyz";
+        default:
+            break;
+            
+    }
+}
+
+
+void print(int num,string output){
+    if(num==0){
+        cout<<output<<endl;
+        return;
+    }
+    int last = num%10;
+    string sequence = getSequence(last);
+    int size = sequence.size();
+    for(int k=0;k<size;k++)
+    print(num/10,sequence[k]+output);
+}
+
+
+void printKeypad(int num){
+    string output = "";
+    print(num,output);
+}
