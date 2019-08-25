@@ -1,0 +1,33 @@
+void swap(int &a,int &b){
+    int tmp = a;
+    a = b;
+    b = tmp;
+}
+int fixPivot(int* input,int start,int end){
+    int pi = end;
+    int j = 0;
+    for(int i = 0; i < pi; i++){
+        if(input[i] <= input[pi]){
+            swap(input[i],input[j]);
+            j++;
+        }
+    }
+    swap(input[j],input[pi]);
+    pi = j;
+    return pi;
+}
+void helper(int *input,int start,int end){
+    if(start >= end)
+        return;
+    int pi = fixPivot(input,start,end);
+    helper(input,start,pi-1);
+    helper(input,pi+1,end);
+}
+void quickSort(int input[], int size) {
+  /* Don't write main().
+     Don't read input, it is passed as function argument.
+     Change in the given array itself.
+     Taking input and printing output is handled automatically.
+  */
+    helper(input,0,size-1);
+}
