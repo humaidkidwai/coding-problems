@@ -1,0 +1,71 @@
+/*
+Sort an array A using Merge Sort.
+Change in the input array itself. So no need to return or print anything.
+Input format :
+Line 1 : Integer n i.e. Array size
+Line 2 : Array elements (separated by space)
+Output format :
+Array elements in increasing order (separated by space)
+Constraints :
+1 <= n <= 1000
+Sample Input:
+6 
+2 6 8 5 4 3
+Sample Output:
+2 3 4 5 6 8
+*/
+
+void merge(int *input,int start,int mid,int end){
+    
+    int n1 = mid - start + 1;
+    
+    int n2 = end - mid;
+    
+    int left[n1],right[n2];
+    
+    
+    for(int i = 0; i < n1; i++)
+        left[i] = input[start + i];
+    
+    
+    for(int i = 0; i < n2; i++)
+        right[i] = input[mid + 1 + i];
+    
+    
+    int i = 0, j = 0, k = start;
+    while(i < n1 && j < n2){
+        if(left[i] <= right[i]){
+            input[k] = left[i];
+            i++;
+        }
+        else{
+            input[k] = right[j];
+            j++;
+        }
+        k++;
+    }
+    while(i < n1){
+        input[k] = left[i];
+        k++;
+        i++;
+    }
+    while(j < n2){
+        input[k] = right[j];
+        k++;
+        j++;
+    }
+}
+
+void ms(int *input,int start,int end){
+    if(start < end){
+        int mid = (start + end) / 2;
+        ms(input,start,mid);
+        ms(input,mid+1,end);
+        merge(input,start,mid,end);
+    }
+}
+
+void mergeSort(int input[], int size){
+	// Write your code here
+    ms(input,0,size-1);  
+}
