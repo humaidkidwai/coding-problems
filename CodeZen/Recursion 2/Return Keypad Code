@@ -1,0 +1,66 @@
+/*
+Given an integer n, using phone keypad find out all the possible strings that can be made using digits of input n.
+Return empty string for numbers 0 and 1.
+Note : The order of strings are not important.
+Input Format :
+Integer n
+Output Format :
+All possible strings in different lines
+Constraints :
+1 <= n <= 10^6
+Sample Input:
+23
+Sample Output:
+ad
+ae
+af
+bd
+be
+bf
+cd
+ce
+cf
+*/
+#include<bits/stdc++.h>
+using namespace std;
+string getKeycode(int num){
+    switch(num){
+        case 2:
+            return "abc";
+        case 3:
+            return "def";
+        case 4:
+            return "ghi";
+        case 5:
+            return "jkl";
+        case 6:
+            return "mno";
+        case 7:
+            return "pqrs";
+        case 8:
+            return "tuv";
+        case 9:
+            return "wxyz";
+        default:
+            break;
+    }
+}
+int keypad(int num, string output[]){
+    /* Insert all the possible combinations of the integer number into the output string array. You do not need to
+    print anything, just return the number of strings inserted into the array.
+    */
+    if(num > 0 && num < 10){
+        string keyCodes = getKeyCode(num);
+        for(int i = 0; i < keyCodes.size();i++)
+            output[i] = keyCodes[i];
+        return keyCodes.size();
+    }
+    int cur = num % pow(10,x);
+    int smallAns = num / pow(10,x);
+    int count = keypad(smallAns,output);
+    string curKeyCode = getKeyCode(x);
+    count = count * curKeyCode.size();
+    for(int i = count - 1; i >= origCount;i--){
+        output[i] = output[j--] 
+    }
+}
