@@ -1,0 +1,59 @@
+/*
+Given a tree, find and return the node for which sum of data of all children and the node itself is maximum. In the sum, data of node itself and data of immediate children is to be taken.
+Input format :
+
+Line 1 : Elements in level order form separated by space (as per done in class). Order is -
+
+Root_data, n (No_Of_Child_Of_Root), n children, and so on for every element
+
+Output format : Node with maximum sum.
+
+Sample Input 1 :
+5 3 1 2 3 1 15 2 4 5 1 6 0 0 0 0
+Sample Output 1 :
+1
+*/
+
+
+// Following is the given Tree node structure
+/**************
+
+class TreeNode {
+	TreeNode<T>** children;
+	int childCount;
+
+	public:
+	T data;
+
+	TreeNode(T data);	// Constructor
+	int numChildren();
+	void addChild(TreeNode<T>* child);
+	TreeNode<T>* getChild(int index);
+	void setChild(int index, TreeNode<T>* child);
+};
+
+***************/
+#include<bits/stdc++.h>
+using namespace std;
+
+pair<TreeNode<int>*,int>* findMax(TreeNode<int>* root,int sum){
+    
+    for(int i=0;i<root->numChildren();i++)
+        sum += root->getChild(i)->data;
+    
+    pair<TreeNode<int>*,int>* ans = new pair<TreeNode<int>*,int>();
+    ans -> first = root;
+    ans -> second = sum;
+    
+    for(int i=0;i<root->numChildren();i++){
+        pair<TreeNode<int>*,int>* tmp = findMax(root->getChild(i),root->getChild(i)->data);
+        ans = (tmp->second>ans->second)?tmp:ans;
+    }
+    return ans;
+}
+TreeNode<int>* maxSumNode(TreeNode<int> *root){
+    // Write your code here
+    return findMax(root,root->data) -> first;
+
+}
+
