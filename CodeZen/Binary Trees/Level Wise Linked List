@@ -1,0 +1,89 @@
+/*
+Given a binary tree, write code to create a separate linked list for each level. You need to return the array which contains head of each level linked list.
+Input format :
+
+Elements in level order form (separated by space). If any node does not have left or right child, take -1 in its place.
+
+Output format : Each level linked list is printed in new line (elements separated by space).
+
+Sample Input :
+5 6 10 2 3 -1 -1 -1 -1 -1 9 -1 -1
+Sample Output :
+5 
+6 10 
+2 3 
+9
+
+*/
+
+// Following is the Node and Binary Tree node structure
+
+/**************
+class node{
+public:
+    T data;
+    node<T> * next;
+    node(T data){
+        this->data=data;
+        this->next=NULL;
+    }
+};
+
+class BinaryTreeNode {
+    public : 
+    T data;
+    BinaryTreeNode<T> *left;
+    BinaryTreeNode<T> *right;
+
+    BinaryTreeNode(T data) {
+        this -> data = data;
+        left = NULL;
+        right = NULL;
+    }
+};
+
+***************/
+#include<bits/stdc++.h>
+using namespace std;
+void insertLL(node<int>* &head,int element){
+    node<int>* curr = new node<int>(element);
+    if(!head){
+        head = curr;
+        head->next = nullptr;
+        return;
+    }
+    node<int>* p = head;
+    while(p->next){
+        p = p->next;
+    }
+    p->next = curr;
+    return;
+}
+vector<node<int>*> createLLForEachLevel(BinaryTreeNode<int> *root) {
+    // Write your code here
+    
+    queue<BinaryTreeNode<int>*> q;
+    vector<node<int>*>tree;
+    
+    if(!root)
+        return tree;
+    
+    q.push(root);
+    while(!q.empty()){
+        int size = q.size();
+        node<int>* head = nullptr;
+        while(size--){
+            BinaryTreeNode<int>* temp = q.front();
+            q.pop();
+            if(temp->left)
+                q.push(temp->left);
+            if(temp->right)
+                q.push(temp->right);
+            insertLL(head,temp->data);
+        }
+        tree.push_back(head);
+    }
+    // for(int i=0;i<tree->size();i++)
+    //     cout<< tree[i].data <<" ";
+    return tree;
+}
