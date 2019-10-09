@@ -1,0 +1,130 @@
+/*
+Givan n number of words, you need to find if there exist any two words which can be joined to make a palindrome or any word itself is a palindrome.
+Return true or false.
+Input Format :
+Line 1 : Integer n
+Line 2 : n words (separated by space)
+Output Format :
+true ot false
+Sample Input 1 :
+4
+abc def ghi cba
+Sample Output 2 :
+true
+Sample Output 1 Expalanation :
+"abc" and "cba" forms a palindrome
+Sample Input 2 :
+4
+abc def ghi hg
+Sample Output 2 :
+true
+*/
+
+
+#include <string>
+#include <vector>
+#include<iostream>
+using namespace std;
+class TrieNode {
+	public :
+	char data;
+	TrieNode **children;
+	bool isTerminal;
+	int childCount;
+
+	TrieNode(char data) {
+		this -> data = data;
+		children = new TrieNode*[26];
+		for(int i = 0; i < 26; i++) {
+			children[i] = NULL;
+		}
+		isTerminal = false;
+		childCount = 0;
+	}
+};
+
+class Trie {
+	TrieNode *root;
+
+	public :
+	int count;
+
+	Trie() {
+		this->count = 0;
+		root = new TrieNode('\0');
+	}
+
+	bool insertWord(TrieNode *root, string word) {
+		// Base case
+		if(word.size() == 0) {
+			if (!root->isTerminal) {
+				root -> isTerminal = true;
+				return true;	
+			} else {
+				return false;
+			}
+		}
+
+		// Small Calculation
+		int index = word[0] - 'a';
+		TrieNode *child;
+		if(root -> children[index] != NULL) {
+			child = root -> children[index];
+		}
+		else {
+			child = new TrieNode(word[0]);
+			root -> children[index] = child;
+			root->childCount++;
+		}
+
+		// Recursive call
+		return insertWord(child, word.substr(1));
+	}
+
+	// For user
+	void insertWord(string word) {
+		if (insertWord(root, word)) {
+			this->count++;
+		}
+	}
+
+	bool isPalindrome(string tmp){
+            int i = 0, j = tmp.size() - 1;
+            while(i < j){
+                if(tmp[i]!=tmp[j])
+                    return false;
+                i++;
+                j--;
+            }
+            return true;
+    }
+    bool isPalindromeExists(string tmp,TrieNode* otherString){
+        
+        for(int i = tmp.size()-1; i >= 0; i--){
+            otherString = otherString->children[tmp[i]-'a'];
+            if(!otherString)
+                return false;
+            if(otherString->data != tmp[i] && i == tmp.size()-1)
+                continue;
+            if(otherString->data != tmp[i])
+                return false;
+            
+            }
+            return true;
+        
+    }
+	bool findIfPalindromePair(vector<string> arr) {
+		// Complete this function
+		// Return true or false.
+        for(int i = 0; i < arr.size(); i++){
+            insertWord(arr[i]);
+            string tmp = arr[i];
+            if(isPalindrome(tmp))
+                return true;
+            
+            if(isPalindromeExists(tmp,root))
+                return true;
+        }
+        return false;
+	}
+};
