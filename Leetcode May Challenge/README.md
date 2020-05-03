@@ -1,4 +1,4 @@
-# Leetcode May Challenge :fire:🧠
+# LeetCode May Challenge :fire:🧠
 ![alt-text](https://assets.leetcode.com/static_assets/public/images/LeetCode_Sharing.png "Leetcode May Challenge")
 
 
