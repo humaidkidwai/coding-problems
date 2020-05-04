@@ -1,0 +1,22 @@
+class Solution {
+public:
+    int firstSetBit(int num){
+        int pos = 0; 
+        while (num) { 
+            num/= 2; 
+            pos++; 
+        }
+        return pos;
+    }
+    int findComplement(int num) {
+        // find bit position of first set bit
+        // from that position, until the LSB, xor 
+        
+        int position = firstSetBit(num);
+        cout<<position<<endl;
+        while(position--)
+            num = (1<<position) ^ num;
+        return num;
+        
+    }
+};
