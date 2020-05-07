@@ -1,0 +1,54 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode() : val(0), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x) : val(x), left(nullptr), right(nullptr) {}
+ *     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
+ * };
+ */
+
+class Solution {
+public:
+    
+    pair<int,TreeNode*> depthParent(TreeNode* root, int element){
+        pair<int,TreeNode*> result;
+        int depth = 0;
+        TreeNode* par = NULL;
+        queue<pair<TreeNode*,int>> q;
+        q.push(make_pair(root,depth));
+        
+        while(!q.empty()){
+            pair<TreeNode*,int> par = q.front();
+            q.pop();
+            
+            if((par.first->left && par.first->left->val == element)||(par.first->right && par.first->right->val == element) ){
+                result = make_pair(par.second+1,par.first);
+                break;
+            }
+            
+            if(par.first->left)
+            q.push(make_pair(par.first->left,par.second+1));
+            
+            if(par.first->right)
+            q.push(make_pair(par.first->right,par.second+1));
+            
+        }
+        return result;
+    }
+    
+    bool isCousins(TreeNode* root, int x, int y) {
+        pair<int,TreeNode*> x_depth_parent = depthParent(root,x);
+        pair<int,TreeNode*> y_depth_parent = depthParent(root,y);
+        bool result = false;
+        if(x_depth_parent.first == y_depth_parent.first){
+            if(x_depth_parent.second != y_depth_parent.second)
+                result = true;
+            else
+                result = false;
+        }
+        return result;
+    }
+};
