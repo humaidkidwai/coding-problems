@@ -10,4 +10,5 @@
 |Day 4|[Number Complement](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%204:%20Number%20Complement)|Easy|Bit Magic|
 |Day 5|[First Unique Character in a String](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%205:%20First%20Unique%20Character%20in%20a%20String)|Easy|Hash Map|
 |Day 6| [Majority Element](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%206:%20Majority%20Element)|Easy|Voting Algorithm|
-|Day 7|[Cousins in Binary Tree](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%207:%20Cousins%20in%20Binary%20Tree)|Easy|BFS
+|Day 7|[Cousins in Binary Tree](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%207:%20Cousins%20in%20Binary%20Tree)|Easy|BFS|
+|Day 8|[Check if it is a straght line](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%208:%20Check%20if%20it%20is%20straight%20line)|Easy|Equation of Line(Basic Math)|
