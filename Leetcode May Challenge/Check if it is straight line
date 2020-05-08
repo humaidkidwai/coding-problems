@@ -1,0 +1,19 @@
+class Solution {
+public:
+    bool checkStraightLine(vector<vector<int>>& coordinates) {
+        bool result = true;
+        float slope = coordinates[1][1] - coordinates[0][1];
+        slope==0?slope = 0:slope /= coordinates[1][0] - coordinates[0][0];
+
+        for(int i = 2; i < coordinates.size(); i++){
+            float curSlope = coordinates[i][1] - coordinates[0][1];
+            curSlope==0?curSlope = 0:curSlope /= coordinates[i][0] - coordinates[0][0];
+            
+            if(curSlope != slope){
+                result = false;
+                break;
+            }
+        }
+        return result;
+    }
+};
