@@ -1,0 +1,20 @@
+class Solution:
+    
+    def isPerfectSquare(self, num: int) -> bool:
+        if num == 1:
+            return True
+        result = False
+        start,end = 1,num//2
+        while start <= end:
+            mid = (start+end)//2
+            tmp = mid * mid
+            if tmp == num:
+                result = True
+                break
+            elif tmp > num: 
+                end = mid - 1
+            else:
+                start = mid + 1
+                
+        return result
+        
