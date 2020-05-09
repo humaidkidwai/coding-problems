@@ -1,0 +1,27 @@
+class Solution:
+
+    
+    def checkStraightLine(self, coordinates: List[List[int]]) -> bool:
+        result = True
+        Y = coordinates[1][1] - coordinates[0][1]
+        X = coordinates[1][0] - coordinates[0][0]
+        if X == 0 or Y == 0:
+            slope = 0
+        else:
+            slope = Y/X
+        
+        for i in range(2,len(coordinates)):
+            curY = coordinates[i][1] - coordinates[0][1]
+            curX = coordinates[i][0] - coordinates[0][0]
+            
+            if curX == 0 or curY == 0: 
+                curSlope = 0 
+            else:
+                curSlope = curY/curX
+            
+            if curSlope != slope:
+                result = False
+                break
+                
+        return result
+        
