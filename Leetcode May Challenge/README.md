@@ -12,3 +12,4 @@
 |Day 6| [Majority Element](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%206:%20Majority%20Element)|Easy|Voting Algorithm|
 |Day 7|[Cousins in Binary Tree](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%207:%20Cousins%20in%20Binary%20Tree)|Easy|BFS|
 |Day 8|[Check if it is a straght line](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%208:%20Check%20if%20it%20is%20straight%20line)|Easy|Equation of Line(Basic Math)|
+|Day 9| [Valid Perfect Square](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%209:%20Valid%20Perfect%20Square)|Easy|Binary Search|
