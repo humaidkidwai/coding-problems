@@ -1,0 +1,38 @@
+class Solution {
+public:
+    
+    bool isValidLocation(vector<vector<int>>& image,int r, int c, int oldColor){
+        return r >= 0  && c >= 0 && r < image.size() && c < image[0].size() && image[r][c] == oldColor;
+    }
+    
+    vector<vector<int>> floodFill(vector<vector<int>>& image, int sr, int sc, int newColor) {
+        stack<pair<int,int>> s;
+        int oldColor = image[sr][sc];
+        
+        if(oldColor == newColor)
+            return image;
+        
+        vector<pair<int,int>> directions;
+        directions.push_back(make_pair(1,0));
+        directions.push_back(make_pair(-1,0));
+        directions.push_back(make_pair(0,1));
+        directions.push_back(make_pair(0,-1));
+        s.push(make_pair(sr,sc));
+        
+        
+        while(!s.empty()){
+            int r = s.top().first;
+            int c = s.top().second;
+            image[r][c] = newColor;
+            s.pop();
+            
+            for(pair<int,int> offset: directions){
+                int x = r+offset.first;
+                int y = c+offset.second;
+                if(isValidLocation(image,x,y,oldColor))
+                    s.push(make_pair(x,y));
+            }
+        }
+        return image;
+    }
+};
