@@ -1,0 +1,54 @@
+class Solution {
+public:
+    int singleNonDuplicate(vector<int>& nums) {
+        if(nums.size() == 1)
+            return nums[0];
+        
+        int start = 0;
+        int end = nums.size()-1;
+        int result;
+        
+        //Concept: array will always have odd length
+        //In order to solve in O(logn) time, we need binary search
+        
+        while(start <= end){
+            int mid = start + (end-start)/2;
+            int nleft = mid-start;
+            int nright = end-mid;
+            
+            //if there is only one element, return it
+            //if the middle element is unique, return it
+            if((nleft == 0 && nright == 0) || (nums[mid-1] != nums[mid] && nums[mid+1] != nums[mid])){
+                result = nums[mid];
+                break;
+            }
+            //now since the mid of an odd sized array will equally divide it into two halves
+            //the half with odd number of elements will contain the answer as there is only one unique answer
+            //the half with even number of elements cannot contain the answer because that would imply there are 2 unique answers
+            //so we maintain nleft and nright which is the count of elements on either sides of the mid
+            else if(nums[mid-1] == nums[mid])
+                nleft--;
+            
+            else
+                nright--;
+            
+            //if left half is odd sized, the answer will lie in the left half of mid
+            if(nleft % 2 == 1){
+                if(nums[mid-1] == nums[mid])
+                    end = mid - 2;
+                else
+                    end = mid - 1; 
+            }
+            //Similarly, if right half is odd sized, answer will lie in right side of mid
+            else if(nright % 2 == 1){
+                if(nums[mid+1] == nums[mid])
+                    start = mid + 2;
+                else
+                    start = mid + 1;
+
+            }
+            
+        }
+        return result;
+    }
+};
