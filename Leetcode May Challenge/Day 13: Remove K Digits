@@ -1,0 +1,41 @@
+class Solution {
+public:
+    bool isSorted(string num){
+        bool result = true;
+        for(int i = 0; i < num.size()-1; i++)
+            if(num[i] > num[i+1]){
+                result = false;
+                break;
+            }
+        return result;
+    }
+    string removeKdigits(string num, int k) {
+        if(k == 0)
+            return num;
+        if(k == num.size())
+            return "0";
+        
+        while(k--){
+            if(isSorted(num)){
+                num.erase(num.begin() + num.size()-1);
+            }
+            else{
+                for(int i = 0; i < num.size() - 1; i++){
+                    if(num[i] > num[i+1]){
+                        num.erase(num.begin() + i);
+                        break;
+                        }
+                }
+            }
+        }
+        
+        int i = 0;
+        while(num[i] == '0')
+            num.erase(num.begin() + i);
+        
+        if(num.size())
+            return num;
+        else
+            return "0";
+    }
+};
