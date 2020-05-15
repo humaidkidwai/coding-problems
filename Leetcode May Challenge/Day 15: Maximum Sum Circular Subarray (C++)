@@ -1,0 +1,28 @@
+
+class Solution {
+public:
+    int kadane(vector<int> A){
+        ios::sync_with_stdio(false);
+        cin.tie(nullptr);
+        int max_so_far = A[0];
+        int max_ending_here = A[0];
+        for(int i = 1; i < A.size(); i++){
+            max_ending_here = max(max_ending_here+A[i],A[i]);
+            max_so_far = max(max_so_far,max_ending_here);
+        }
+        return max_so_far;
+    }
+    int maxSubarraySumCircular(vector<int>& A) {
+        int max_between = kadane(A);
+        if(max_between < 0)
+            return max_between;
+        int max_wrap = 0;
+        for(int i = 0; i < A.size(); i++){
+            max_wrap += A[i];
+            A[i] *= -1;
+        }
+        //cout<<max_between<<" "<<kadane(A)<<endl;
+        max_wrap += kadane(A);
+        return max(max_between,max_wrap);
+    }
+};
