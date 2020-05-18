@@ -1,0 +1,24 @@
+class Solution {
+public:
+    bool checkInclusion(string s1, string s2) {
+        if(s1.size() > s2.size())
+            return false;
+        vector<int> hash(26,0);
+        vector<int> curr(26,0);
+        for(int i = 0; i < s1.size(); i++)
+            hash[s1[i] - 'a']++;
+        int len = s1.size();
+        int start = 0, end = 0;
+        while(end < s2.size()){
+            curr[s2[end] -'a']++;
+            while(end-start+1 > len){
+                curr[s2[start] - 'a']--;
+                start++;
+            }
+            if(curr == hash)
+                return true;
+            end++;
+        }
+        return false;
+    }
+};
