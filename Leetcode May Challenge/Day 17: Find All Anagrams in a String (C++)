@@ -1,0 +1,21 @@
+class Solution {
+public:
+    vector<int> findAnagrams(string s, string p) {
+        vector<int> needed(26,0), current(26,0);
+        vector<int> result;
+        if(s.size()<p.size())
+            return result;
+        for(int i = 0; i < p.size(); i++)
+            needed[p[i] - 97]++;
+
+        for(int i = 0; i < s.size(); i++) {
+            current[s[i] - 97]++;
+            if(i >= p.size())
+                current[s[i - p.size()] - 97]--;
+            if(current == needed)
+                result.push_back(i - p.size() + 1);
+        }
+        
+        return result;
+    }
+};
