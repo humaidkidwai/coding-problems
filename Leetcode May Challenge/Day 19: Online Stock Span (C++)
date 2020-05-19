@@ -1,0 +1,32 @@
+class StockSpanner {
+public:
+    vector<pair<int,int>> buffer;
+    StockSpanner() {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        buffer.emplace_back(make_pair(1,0));
+    }
+    
+    int next(int price) {
+        if(buffer[buffer.size()-1].second == 0){
+            buffer[0].second = price;
+            return buffer[0].first;
+        }
+        int i = buffer.size()-1;
+        int span = 1;
+        while(i >= 0){
+            if(buffer[i].second > price)
+                break;
+            span += buffer[i].first;
+            i -= buffer[i].first;
+        }
+        buffer.emplace_back(make_pair(span,price));
+        return buffer.back().first;
+    }
+};
+
+/**
+ * Your StockSpanner object will be instantiated and called as such:
+ * StockSpanner* obj = new StockSpanner();
+ * int param_1 = obj->next(price);
+ */
