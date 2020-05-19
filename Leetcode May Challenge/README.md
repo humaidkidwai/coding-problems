@@ -22,3 +22,4 @@
 |Day 16|Odd Even Linked List [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2016:%20Odd%20Even%20Linked%20List%20(C%2B%2B))|Medium|Linked List|
 |Day 17| Find All Anagrams in String[(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2017:%20Find%20All%20Anagrams%20in%20a%20String%20(C%2B%2B))|Medium|Sliding Window|
 |Day 18|Permutation in String[(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2018:%20Permutation%20in%20String%20(C%2B%2B))|Medium|Sliding Window|
+|Day 19|Online Stock Span [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2019:%20Online%20Stock%20Span%20(C%2B%2B)) [(Python)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2019:%20Online%20Stock%20Span%20(Python))|Medium|DP|
