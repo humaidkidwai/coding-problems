@@ -1,0 +1,27 @@
+class Solution {
+public:
+    int countSquares(vector<vector<int>>& matrix) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        int m = matrix[0].size();
+        int n = matrix.size();
+        int result = 0;
+        vector<vector<int>> dp = matrix;
+        for(int i = 0; i < n; i++){
+            for(int j = 0; j < m; j++){
+                if(matrix[i][j] == 0)
+                    continue;
+                
+                if(i == 0 || j == 0){
+                        result++;
+                }
+                else{
+                    dp[i][j] = min(min(dp[i-1][j],dp[i][j-1]),dp[i-1][j-1]) + 1;
+                    result += dp[i][j];
+                    
+                }
+            }
+        }
+        return result;
+    }
+};
