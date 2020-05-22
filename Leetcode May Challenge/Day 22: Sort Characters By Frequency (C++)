@@ -1,0 +1,21 @@
+bool myComp(const pair<char,int> &p1,const pair<char,int> &p2){
+        return (p1.second > p2.second);
+    }
+class Solution {
+public:
+    
+    string frequencySort(string s) {
+        unordered_map<char,int> mp;
+        for(char c: s)
+            mp[c]++;
+        vector<pair<int,int>> v;
+        for(auto i = mp.begin(); i != mp.end(); i++)
+            v.push_back(make_pair(i->first,i->second));
+        sort(v.begin(),v.end(),myComp);
+        string result = "";
+        for(int i = 0; i < v.size(); i++)
+            for(int j = 0; j < v[i].second; j++)
+                result += v[i].first;
+        return result;
+    }
+};
