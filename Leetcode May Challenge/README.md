@@ -27,3 +27,4 @@ Day 20| Kth Smallest Element in BST [(C++)](https://github.com/atjustbeinghumaid
 |Day 21|Count Square Submatrices with All Ones [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2021:%20Count%20Square%20Submatrices%20with%20All%20Ones%20(C%2B%2B))|Medium|DP|
 |Day 22|Sort Characters by Frequency [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2022:%20Sort%20Characters%20By%20Frequency%20(C%2B%2B))|Medium|Maps (STL)|
 |Day 26| Contigous Array [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2026:%20Contigous%20Array%20(C%2B%2B))|Medium|Hash Table|
+Day 28| Counting Bits [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2028:%20Counting%20Bits%20(C%2B%2B))|Medium|Basic Math
