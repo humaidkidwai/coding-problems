@@ -1,0 +1,9 @@
+int Solution::maxSubArray(const vector<int> &A) {
+    int curSum = A[0],maxSum = A[0];
+    int N = A.size();
+    for(int i = 1; i < N; i++){
+        curSum = max(A[i],curSum + A[i]);
+        maxSum = max(maxSum,curSum);
+    }
+    return maxSum;
+}
