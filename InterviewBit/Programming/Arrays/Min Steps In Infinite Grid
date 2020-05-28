@@ -1,0 +1,10 @@
+int Solution::coverPoints(vector<int> &A, vector<int> &B) {
+    int N = A.size();
+    int minSteps = 0;
+    for(int i = 1; i < N; i++){
+        int prev_r = A[i-1];
+        int prev_c = B[i-1];
+        minSteps += max(abs(prev_r - A[i]),abs(prev_c - B[i]));
+    }
+    return minSteps;
+}
