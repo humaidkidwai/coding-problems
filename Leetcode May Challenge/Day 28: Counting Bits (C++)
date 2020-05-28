@@ -1,0 +1,28 @@
+class Solution {
+public:
+    
+    int log(long long x){
+    return 64 - __builtin_clzl(x) - 1;
+    }
+    
+    int setBits(int num){
+        if(num == 0)
+            return 0;
+        int closest = (int)pow(2, log(num));
+        if(num%closest == 0 || num == 1)
+            return 1;
+        int diff = num % closest;
+        return 1 + setBits(diff);
+        
+        
+    }
+    vector<int> countBits(int num) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
+        vector<int> result;
+        for(int i = 0; i <= num; i++)
+            result.emplace_back(setBits(i));
+        return result; 
+    }
+};
