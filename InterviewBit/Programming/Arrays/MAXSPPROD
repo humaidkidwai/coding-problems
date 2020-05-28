@@ -1,0 +1,41 @@
+int Solution::maxSpecialProduct(vector<int> &A) {
+    //maintain curr-sp-product and max-sp-product
+    //maintain two arrays --LeftSpVal and RightSpVal
+    //O(1) time to find for any array element, its LeftSpVal and RightSpVal
+    //Construct both arrays in O(n) time
+    //Total time complexity = O(3N) == O(N)
+    long long int mx = 0,cur;
+    int N = A.size();
+    vector<long long int> left(N), right(N);
+    stack<int> st;
+    
+    for(int i = 0; i < N; i++){
+        while(!st.empty() && A[st.top()] <= A[i])
+            st.pop();
+        
+        if(st.empty())
+            left[i] = 0;
+        else
+            left[i] = st.top();
+        
+        st.push(i);
+    }
+    while(!st.empty())
+    st.pop();
+    for(int i = N-1; i >= 0; i--){
+        while(!st.empty() && A[st.top()] <= A[i])
+            st.pop();
+        
+        if(st.empty())
+            right[i] = 0;
+        else
+            right[i] = st.top();
+        
+        st.push(i);
+    }
+    for(int i = 1; i < N-1; i++){
+        cur = left[i] * right[i];
+        mx = max(mx,cur);
+    }
+    return mx%1000000007;
+}
