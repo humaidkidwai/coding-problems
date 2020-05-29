@@ -28,3 +28,4 @@ Day 20| Kth Smallest Element in BST [(C++)](https://github.com/atjustbeinghumaid
 |Day 22|Sort Characters by Frequency [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2022:%20Sort%20Characters%20By%20Frequency%20(C%2B%2B))|Medium|Maps (STL)|
 |Day 26| Contigous Array [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2026:%20Contigous%20Array%20(C%2B%2B))|Medium|Hash Table|
 Day 28| Counting Bits [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2028:%20Counting%20Bits%20(C%2B%2B))|Medium|Basic Math
+Day 29| Course Schedule [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2029:%20Course%20Schedule%20(C%2B%2B))|Medium|DFS(Cycle in Graph)|
