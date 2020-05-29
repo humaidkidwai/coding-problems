@@ -1,0 +1,29 @@
+/**
+ * Definition for an interval.
+ * struct Interval {
+ *     int start;
+ *     int end;
+ *     Interval() : start(0), end(0) {}
+ *     Interval(int s, int e) : start(s), end(e) {}
+ * };
+ */
+bool myComp(const Interval &A, const Interval &B){
+    return A.start < B.start;
+ }
+vector<Interval> Solution::merge(vector<Interval> &A) {
+    // Do not write main() function.
+    // Do not read input, instead use the arguments to the function.
+    // Do not print the output, instead return values as specified
+    // Still have a doubt. Checkout www.interviewbit.com/pages/sample_codes/ for more details
+    sort(A.begin(),A.end(),myComp);
+    vector<Interval> result;
+    result.emplace_back(A[0]);
+    for(int i = 1; i < A.size(); i++){
+        if(A[i].start <= result.back().end){
+            result.back().end = max(A[i].end,result.back().end);
+        }
+        else
+            result.emplace_back(A[i]);
+    }
+    return result;
+}
