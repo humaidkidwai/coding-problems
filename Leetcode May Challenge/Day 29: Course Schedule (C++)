@@ -1,0 +1,41 @@
+//0 = unvisited
+//1 = in process
+//2 = completed
+
+class Solution {
+public:
+    bool cycle(vector<vector<int>> &adj,int curr, vector<int> &visited){
+        if(visited[curr] == 1)
+            return true;
+        
+        visited[curr] = 1;
+        
+        for(int i = 0; i < adj[curr].size(); i++)
+            if(visited[adj[curr][i]] != 2)
+                if(cycle(adj,adj[curr][i],visited))
+                    return true;
+            
+
+        visited[curr] = 2;
+        return false;
+    }
+    
+    bool canFinish(int num, vector<vector<int>>& pre) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        cout.tie(NULL);
+        
+        vector<vector<int>> adj(num);
+        vector<int> visited(num,0);
+        
+        for(int i = 0; i < pre.size(); i++)
+            adj[pre[i][0]].emplace_back(pre[i][1]);
+        
+        for(int i = 0; i < num; i++)
+            if(!visited[i])
+                if(cycle(adj,i,visited))
+                    return false;
+        
+        return true;
+    }
+};
