@@ -1,0 +1,25 @@
+bool myComp(int a, int b){
+    string aa = to_string(a);
+    string bb = to_string(b);
+    string option_one = aa + bb;
+    string option_two = bb + aa;
+    
+    if(option_one>option_two)
+    return true;
+    return false;
+
+}
+
+string Solution::largestNumber(const vector<int> &A) {
+    vector<int> tmp = A;
+    sort(tmp.begin(),tmp.end(),myComp);
+    string result = "";
+    for(int i = 0; i < tmp.size(); i++)
+    result += to_string(tmp[i]);
+    
+    if(result[0] == '0')
+    return "0";
+    
+    return result;
+    
+}
