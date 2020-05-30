@@ -1,0 +1,14 @@
+int maxEvenOdd(int a[], int n) 
+{ 
+   //Your code here
+   int s = 0, e = 1, result = 1;
+   while(e < n){
+    if(a[e]%2 == a[e-1]%2){
+        result = max(result,e-s);
+        s = e;
+        }
+        e++;
+   }
+   result = max(e-s,result);
+   return result;
+} 
