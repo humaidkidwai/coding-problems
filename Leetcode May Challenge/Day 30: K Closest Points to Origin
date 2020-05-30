@@ -1,0 +1,20 @@
+typedef pair<double,pair<int,int>> ppi;
+class Solution {
+public:
+    vector<vector<int>> kClosest(vector<vector<int>>& points, int K) {
+        priority_queue<ppi,vector<ppi>,greater<ppi>> pq;
+        vector<vector<int>>result;
+        for(int i = 0; i < points.size(); i++){
+            int x = points[i][0];
+            int y = points[i][1];
+            double dist = sqrt(x*x + y*y);
+            pq.push(make_pair(dist,make_pair(x,y)));
+        }
+        while(K--){
+            result.push_back({pq.top().second.first,pq.top().second.second});
+            pq.pop();
+        }
+        return result;
+        
+    }
+};
