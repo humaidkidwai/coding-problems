@@ -29,4 +29,5 @@ Day 20| Kth Smallest Element in BST [(C++)](https://github.com/atjustbeinghumaid
 |Day 26| Contigous Array [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2026:%20Contigous%20Array%20(C%2B%2B))|Medium|Hash Table|
 Day 28| Counting Bits [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2028:%20Counting%20Bits%20(C%2B%2B))|Medium|Basic Math
 Day 29| Course Schedule [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2029:%20Course%20Schedule%20(C%2B%2B))|Medium|DFS(Cycle in Graph)|
-|Day 30| K Closest Points to Origin [C++](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2030:%20K%20Closest%20Points%20to%20Origin)|Medium|Heaps|
+|Day 30| K Closest Points to Origin [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2030:%20K%20Closest%20Points%20to%20Origin)|Medium|Heaps|
+|Day 31| Edit Distance [(C++)](https://github.com/atjustbeinghumaid/coding-problems/blob/master/Leetcode%20May%20Challenge/Day%2031:%20Edit%20Distance%20(C%2B%2B))|Medium|DP|
