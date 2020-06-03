@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<vector<int>> generateMatrix(int n) {
+        vector<vector<int>> spiral(n,vector<int>(n,0));
+        int top = 0,bottom = n-1,left = 0,right = n-1;
+        int x = 1;
+        while(x <= n*n){
+            for(int col = left; col <= right; col++)
+                spiral[top][col] = x++;
+                
+            for(int row = top+1; row <= bottom; row++)
+                spiral[row][right] = x++;
+               
+            for(int col = right-1; col >= left; col--)
+                spiral[bottom][col] = x++;
+             
+            for(int row = bottom-1; row > top; row--)
+                spiral[row][left] = x++;
+                
+            top++;
+            left++;
+            right--;
+            bottom--;
+        }
+        return spiral;
+    }
+};
