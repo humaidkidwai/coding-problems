@@ -1,0 +1,18 @@
+int Solution::solve(vector<int> &A) {
+    if(A.size() == 0)
+    return -1;
+    
+    sort(A.begin(), A.end());
+    unordered_map<int,int> mp;
+    
+    for(int num: A)
+        mp[num]++;
+    
+    for(int i = 0; i < A.size(); i++){
+        if(A.size() - (i + 1) == A[i] and mp[A[i]] == 1){
+            return 1;
+        }
+        mp[A[i]]--;
+    }
+    return -1;
+}
