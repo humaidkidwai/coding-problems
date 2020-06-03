@@ -1,0 +1,25 @@
+class Solution {
+public:
+    bool searchMatrix(vector<vector<int>>& matrix, int target) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(NULL);
+        
+        int n = matrix.size();
+        if(!n)
+            return false;
+        int row = 0, col = matrix[0].size()-1;
+        
+        while(row < n and col >= 0){
+            if(matrix[row][col] == target)
+                return true;
+            
+            if(matrix[row][col] > target)                
+                col--;
+            
+            else                
+                row++;
+            
+        }
+        return false;
+    }
+};
